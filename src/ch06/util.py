@@ -6,6 +6,9 @@ from ch05.util import *
 def random_transformation(n):
     import scipy.stats
     U = scipy.stats.unitary_group.rvs(2**n)
+    print(U)
+    UT = np.conj(U.transpose())
+    print(UT)
 
     def f_direct(state):
         assert(len(state) == 2**n)
@@ -25,3 +28,5 @@ def random_transformation(n):
 def inner(v1, v2):
     assert(len(v1) == len(v2))
     return sum(z1*z2.conjugate() for z1, z2 in zip(v1, v2))
+
+random_transformation(2)

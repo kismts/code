@@ -1,6 +1,6 @@
 import numpy as np
 
-from ch05.util import *
+#from ch05.util import *
 
 
 def random_transformation(n):

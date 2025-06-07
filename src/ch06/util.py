@@ -19,6 +19,12 @@ def round_vector(vector):
         item = vector[i]
         vector[i] = round(item.real,r)+1j*round(item.imag,r)
 
+def magnitude(vector):
+    res = []
+    for i in range(len(vector)):
+        res[i] = abs(vector[i])
+    return res
+
 
 def random_transformation(n):
     import scipy.stats
@@ -84,6 +90,8 @@ print(state)
 A(state)
 print("\nstate after A matrix (first):")
 print(state)
+print("\nmagnitude:")
+print(magnitude(state))
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)

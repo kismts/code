@@ -2,6 +2,8 @@ import numpy as np
 
 #from ch05.util import *
 r = 4
+n = 2
+print_matr = True
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -22,22 +24,30 @@ def round_vector(vector):
 def magnitude(vector):
     return [round(abs(item),r) for item in vector]
 
-def print_state(state):
+def probability(magn):
+    return [round(pow(item, 2)) for item in magn]
+
+def print_state(text, state):
     round_vector(state)
+    print("\n"+ text)
     print(state)
     print("\nmagnitude:")
-    print(magnitude(state))
+    magn = magnitude(state)
+    print(magn)
+    print("\nprobability:")
+    print(probability(magn))
 
+def print_matrix(matrix):
+    print("\nA matrix:")
+    print(matrix)
+    print("\nA-1 matrix:")
+    print(np.conj(matrix.transpose()))
 
 def random_transformation(n):
     import scipy.stats
     U = scipy.stats.unitary_group.rvs(2**n)
     round_matrix(U)
-    print("\nA matrix:")
-    print(U)
-    UT = np.conj(U.transpose())
-    print("\nA-1 matrix:")
-    print(UT)
+    if print_matr: print_matrix(U)
 
     def f_direct(state):
         assert(len(state) == 2**n)
@@ -66,21 +76,17 @@ def inversion_0_transformation(f, state):
     inverse_transform = f[1]
 
     inverse_transform(state)
-    print("\nstate after inv_A:")
-    print_state(state)
+    print_state("state after inv_A:", state)
 
     #assert is_close(state[0].imag, 0)
     for k in range(1, len(state)):
         state[k] = -state[k]
-    print("\nstate after M0:")
-    print_state(state)
+    print_state("state after M0:", state)
 
     transform(state)
-    print("\nstate after A matrix (second):")
-    print_state(state)
+    print_state("state after A matrix (second):", state)
 
 
-n = 2
 f = random_transformation(n)
 A = f[0]
 
@@ -89,13 +95,11 @@ print("\ninit state:")
 print(state)
 
 A(state)
-print("\nstate after A matrix (first):")
-print_state(state)
+print_state("state after A matrix:", state)
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)
-print("\nstate after oracle:")
-print_state(state)
+print_state("\nstate after oracle:", state)
 
 inversion_0_transformation(f, state)
 

@@ -20,10 +20,7 @@ def round_vector(vector):
         vector[i] = round(item.real,r)+1j*round(item.imag,r)
 
 def magnitude(vector):
-    res = []
-    for i in range(len(vector)):
-        res[i] = abs(vector[i])
-    return res
+    return [abs(item) for item in vector]
 
 
 def random_transformation(n):

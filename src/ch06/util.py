@@ -2,8 +2,8 @@ import numpy as np
 
 #from ch05.util import *
 r = 4
-n = 2
-print_matr = True
+n = 3
+print_matr = False
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -25,7 +25,7 @@ def magnitude(vector):
     return [round(abs(item),r) for item in vector]
 
 def probability(magn):
-    return [round(pow(item, 2)) for item in magn]
+    return [round(pow(item, 2),r) for item in magn]
 
 def print_state(text, state):
     round_vector(state)
@@ -84,7 +84,7 @@ def inversion_0_transformation(f, state):
     print_state("state after M0:", state)
 
     transform(state)
-    print_state("state after A matrix (second):", state)
+    print_state("state after A matrix:", state)
 
 
 f = random_transformation(n)

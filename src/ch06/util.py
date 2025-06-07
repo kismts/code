@@ -68,6 +68,7 @@ def inversion_0_transformation(f, state):
     print(state)
 
     transform(state)
+    round_vector(state)
     print("\nstate after A matrix (second):")
     print(state)
 

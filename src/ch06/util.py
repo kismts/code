@@ -10,7 +10,7 @@ def oracle(state, predicate):
 
 def round_matrix(matrix):
     for row in range(len(matrix)):
-        for col in range(len(row)):
+        for col in range(len(matrix[row])):
             item = matrix[row][col]
             matrix[row][col] = round(item.real,r)+1j*round(item.imag,r)
 

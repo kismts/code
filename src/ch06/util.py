@@ -20,7 +20,13 @@ def round_vector(vector):
         vector[i] = round(item.real,r)+1j*round(item.imag,r)
 
 def magnitude(vector):
-    return [abs(item) for item in vector]
+    return [round(abs(item),r) for item in vector]
+
+def print_state(state):
+    round_vector(state)
+    print(state)
+    print("\nmagnitude:")
+    print(magnitude(state))
 
 
 def random_transformation(n):
@@ -61,19 +67,17 @@ def inversion_0_transformation(f, state):
 
     inverse_transform(state)
     print("\nstate after inv_A:")
-    round_vector(state)
-    print(state)
+    print_state(state)
 
     #assert is_close(state[0].imag, 0)
     for k in range(1, len(state)):
         state[k] = -state[k]
     print("\nstate after M0:")
-    print(state)
+    print_state(state)
 
     transform(state)
-    round_vector(state)
     print("\nstate after A matrix (second):")
-    print(state)
+    print_state(state)
 
 
 n = 2
@@ -86,14 +90,12 @@ print(state)
 
 A(state)
 print("\nstate after A matrix (first):")
-print(state)
-print("\nmagnitude:")
-print(magnitude(state))
+print_state(state)
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)
 print("\nstate after oracle:")
-print(state)
+print_state(state)
 
 inversion_0_transformation(f, state)
 

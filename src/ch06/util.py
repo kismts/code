@@ -14,6 +14,11 @@ def round_matrix(matrix):
             item = matrix[row][col]
             matrix[row][col] = round(item.real,r)+1j*round(item.imag,r)
 
+def round_vector(vector):
+    for i in range(len(vector)):
+        item = vector[i]
+        vector[i] = round(item.real,r)+1j*round(item.imag,r)
+
 
 def random_transformation(n):
     import scipy.stats
@@ -53,6 +58,7 @@ def inversion_0_transformation(f, state):
 
     inverse_transform(state)
     print("\nstate after inv_A:")
+    round_vector(state)
     print(state)
 
     #assert is_close(state[0].imag, 0)

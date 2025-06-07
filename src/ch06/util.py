@@ -1,16 +1,24 @@
 import numpy as np
 
 #from ch05.util import *
+r = 4
 
 def oracle(state, predicate):
     for item in range(len(state)):
         if predicate(item):
             state[item] *= -1
 
+def round_matrix(matrix):
+    for row in range(len(matrix)):
+        for col in range(len(row)):
+            item = matrix[row][col]
+            matrix[row][col] = round(item.real,r)+1j*round(item.imag,r)
+
 
 def random_transformation(n):
     import scipy.stats
     U = scipy.stats.unitary_group.rvs(2**n)
+    round_matrix(U)
     print("\nA matrix:")
     print(U)
     UT = np.conj(U.transpose())

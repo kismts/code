@@ -68,6 +68,29 @@ def init_state(n):
     state[0] = 1
     return state
 
+def inner(v1, v2):
+    assert(len(v1) == len(v2))
+    return sum(z1*z2.conjugate() for z1, z2 in zip(v1, v2))
+
+def inversion(original, current):
+    proj = inner(original, current)
+    for k in range(len(current)):
+        current[k] = 2*proj*original[k] - current[k]
+
+from math import cos 
+def classical_grover(state, predicate, iterations):
+    s = state.copy()
+    #items = [k for k in range(len(state)) if predicate(k)]
+    #p = sum([abs(s[k])**2 for k in items])
+    #theta = asin(sqrt(p))
+    #assert is_close(inner(s, state), 1)
+    for it in range(1, iterations + 1):
+        oracle(state, predicate)
+        inversion(s, state)
+        #assert is_close(inner(s, state), cos(2 * it * theta))
+        #p = sum([abs(state[k])**2 for k in items])
+        #assert is_close(p, sin((2 * it + 1)*theta)**2) 
+
 from math import log2
 def inversion_0_transformation(f, state):
     n = int(log2(len(state)))
@@ -96,10 +119,14 @@ print(state)
 
 A(state)
 print_state("state after A matrix:", state)
+copy = state.copy()
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)
 print_state("\nstate after oracle:", state)
+
+classical_grover(copy, predicate,1)
+print_state("\ncopy state after inversion", copy)
 
 inversion_0_transformation(f, state)
 

@@ -65,3 +65,19 @@ def random_transformation(n):
             state[k] = s[k]
 
     return f_direct, f_inverse
+
+
+f = random_transformation(n)
+A = f[0]
+
+state = init_state(n)
+print("\ninit state:")
+print(state)
+
+A(state)
+print_state("state after A matrix:", state)
+
+predicate = lambda k: True if k == 3 else False
+oracle(state, predicate)
+
+print_state("\nstate after oracle:", state)

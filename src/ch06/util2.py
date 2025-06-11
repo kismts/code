@@ -1,4 +1,3 @@
-#from ch05.util import *
 r = 4
 n = 3
 print_matr = False
@@ -68,7 +67,7 @@ def random_transformation(n):
         assert(len(state) == 2**n)
         m = np.conj(U.transpose())
         col = [arr[column] for arr in m]
-        s = col @ state
+        s = [c * s for c,s in zip(col, state)]
         for k in range(len(s)):
             state[k] = s[k]
             

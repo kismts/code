@@ -51,13 +51,13 @@ def random_transformation(n):
     U = scipy.stats.unitary_group.rvs(2**n)
     round_matrix(U)
     if print_matr: print_matrix(U)
-
+    
     def f_direct(state):
-    	assert(len(state) == 2**n)
+        assert(len(state) == 2**n)
         s = U @ state
         for k in range(len(s)):
             state[k] = s[k]
-
+            
     def f_inverse(state):
         assert(len(state) == 2**n)
         s = np.conj(U.transpose()) @ state

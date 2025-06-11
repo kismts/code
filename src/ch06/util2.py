@@ -63,13 +63,23 @@ def random_transformation(n):
         s = np.conj(U.transpose()) @ state
         for k in range(len(s)):
             state[k] = s[k]
+    
+    def f_col(state, column):
+        assert(len(state) == 2**n)
+        s = np.conj(U.transpose())
+        col = [arr[column] for arr in s]
+        s = col @ state
+        for k in range(len(s)):
+            state[k] = s[k]
+            
 
-    return f_direct, f_inverse
+    return f_direct, f_inverse, f_col
 
 
 f = random_transformation(n)
 A = f[0]
 A_inv = f[1]
+col_inv = f[2]
 
 state = init_state(n)
 print("\ninit state:")
@@ -79,13 +89,31 @@ A(state)
 print_state("state after A:", state)
 
 a_state = state.copy()
-A_inv(a_state)
-print_state("\norig_state:", a_state)
+orig_state = a_state.copy()
+A_inv(orig_state)
+print_state("\norig_state:", orig_state)
 
-predicate = lambda k: True if k == 3 else False
+col = 3
+col_inv(a_state, col)
+print_state("\ncol_a_state:", a_state)
+
+predicate = lambda k: True if k == col else False
 oracle(state, predicate)
 
 print_state("\nstate after oracle:", state)
+oracle_state = state.copy()
+
+col_inv(oracle_state, col)
+print_state("\ncol_oracle_state:", oracle_state)
 
 A_inv(state)
 print_state("\ninv_state", state)
+
+
+
+
+
+
+
+
+

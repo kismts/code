@@ -24,3 +24,23 @@ def magnitude(vector):
 
 def probability(magn):
 	return [round(pow(item, 2),r) for item in magn]
+
+def random_transformation(n):
+    import scipy.stats
+    U = scipy.stats.unitary_group.rvs(2**n)
+    round_matrix(U)
+    if print_matr: print_matrix(U)
+
+	def f_direct(state):
+    	assert(len(state) == 2**n)
+    	s = U @ state
+    	for k in range(len(s)):
+        	state[k] = s[k]
+
+    def f_inverse(state):
+        assert(len(state) == 2**n)
+        s = np.conj(U.transpose()) @ state
+        for k in range(len(s)):
+            state[k] = s[k]
+
+        return f_direct, f_inverse

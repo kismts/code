@@ -75,7 +75,7 @@ print("\ninit state:")
 print(state)
 
 A(state)
-print_state("state after A matrix:", state)
+print_state("state after A:", state)
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)

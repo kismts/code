@@ -41,6 +41,11 @@ def print_matrix(matrix):
     print("\ninverse of A matrix:")
     print(np.conj(matrix.transpose()))
 
+def init_state(n):
+    state = [0 for _ in range(2**n)]
+    state[0] = 1
+    return state
+
 def random_transformation(n):
     import scipy.stats
     U = scipy.stats.unitary_group.rvs(2**n)
@@ -59,4 +64,4 @@ def random_transformation(n):
         for k in range(len(s)):
             state[k] = s[k]
 
-        return f_direct, f_inverse
+    return f_direct, f_inverse

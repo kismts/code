@@ -25,6 +25,16 @@ def magnitude(vector):
 def probability(magn):
 	return [round(pow(item, 2),r) for item in magn]
 
+def print_state(text, state):
+    round_vector(state)
+    print("\n"+ text)
+    print(state)
+    print("\nmagnitude:")
+    magn = magnitude(state)
+    print(magn)
+    print("\nprobability:")
+    print(probability(magn))
+
 def print_matrix(matrix):
     print("\nA matrix:")
     print(matrix)

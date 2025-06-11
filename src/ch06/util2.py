@@ -86,3 +86,6 @@ predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)
 
 print_state("\nstate after oracle:", state)
+
+A_inv(state)
+print_state("\ninv_state", state)

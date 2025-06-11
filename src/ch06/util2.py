@@ -1,6 +1,8 @@
 r = 4
 n = 3
 print_matr = False
+print_magn = False
+print_prob = False
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -28,11 +30,13 @@ def print_state(text, state):
     round_vector(state)
     print("\n"+ text)
     print(state)
-    print("\nmagnitude:")
     magn = magnitude(state)
-    print(magn)
-    print("\nprobability:")
-    print(probability(magn))
+    if print_magn:
+        print("\nmagnitude:")
+        print(magn)
+    if print_prob:
+        print("\nprobability:")
+        print(probability(magn))
 
 def print_matrix(matrix):
     print("\nA matrix:")

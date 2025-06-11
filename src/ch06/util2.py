@@ -25,6 +25,12 @@ def magnitude(vector):
 def probability(magn):
 	return [round(pow(item, 2),r) for item in magn]
 
+def print_matrix(matrix):
+    print("\nA matrix:")
+    print(matrix)
+    print("\ninverse of A matrix:")
+    print(np.conj(matrix.transpose()))
+
 def random_transformation(n):
     import scipy.stats
     U = scipy.stats.unitary_group.rvs(2**n)

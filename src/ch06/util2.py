@@ -66,8 +66,8 @@ def random_transformation(n):
     
     def f_col(state, column):
         assert(len(state) == 2**n)
-        s = np.conj(U.transpose())
-        col = [arr[column] for arr in s]
+        m = np.conj(U.transpose())
+        col = [arr[column] for arr in m]
         s = col @ state
         for k in range(len(s)):
             state[k] = s[k]

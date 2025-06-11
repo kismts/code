@@ -23,7 +23,7 @@ def magnitude(vector):
     return [round(abs(item),r) for item in vector]
 
 def probability(magn):
-	return [round(pow(item, 2),r) for item in magn]
+    return [round(pow(item, 2),r) for item in magn]
 
 def print_state(text, state):
     round_vector(state)

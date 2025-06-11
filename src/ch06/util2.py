@@ -52,11 +52,11 @@ def random_transformation(n):
     round_matrix(U)
     if print_matr: print_matrix(U)
 
-	def f_direct(state):
+    def f_direct(state):
     	assert(len(state) == 2**n)
-    	s = U @ state
-    	for k in range(len(s)):
-        	state[k] = s[k]
+        s = U @ state
+        for k in range(len(s)):
+            state[k] = s[k]
 
     def f_inverse(state):
         assert(len(state) == 2**n)

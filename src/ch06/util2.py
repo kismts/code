@@ -69,6 +69,7 @@ def random_transformation(n):
 
 f = random_transformation(n)
 A = f[0]
+A_inv = f[1]
 
 state = init_state(n)
 print("\ninit state:")
@@ -76,6 +77,10 @@ print(state)
 
 A(state)
 print_state("state after A:", state)
+
+a_state = state.copy()
+orig_state = A_inv(a_state)
+print_state("\norig_state:", orig_state)
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)

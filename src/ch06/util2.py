@@ -79,8 +79,8 @@ A(state)
 print_state("state after A:", state)
 
 a_state = state.copy()
-orig_state = A_inv(a_state)
-print_state("\norig_state:", orig_state)
+A_inv(a_state)
+print_state("\norig_state:", a_state)
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)

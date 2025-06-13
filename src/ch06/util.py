@@ -104,26 +104,27 @@ def inversion_0_transformation(f, state):
     print_state("state after M0:", state)
 
     transform(state)
-    print_state("state after A matrix:", state)
+    print_state("state after A:", state)
 
 
 f = random_transformation(n)
-A = f[0]
+A_start = f[0]
 
 state = init_state(n)
 print("\ninit state:")
 print(state)
 
-A(state)
-print_state("state after A matrix:", state)
-copy = state.copy()
+A_start(state)
+print_state("state after A_start:", state)
+
+classical = state.copy()
 
 predicate = lambda k: True if k == 3 else False
 oracle(state, predicate)
 print_state("\nstate after oracle:", state)
 
-classical_grover(copy, predicate,1)
-print_state("\ncopy state after inversion", copy)
+classical_grover(classical, predicate,1)
+print_state("\nclassical state after iter", classical)
 
 inversion_0_transformation(f, state)
 

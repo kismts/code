@@ -4,6 +4,8 @@ import numpy as np
 r = 4
 n = 3
 print_matr = False
+print_magn = False
+print_prob = False
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -31,11 +33,13 @@ def print_state(text, state):
     round_vector(state)
     print("\n"+ text)
     print(state)
-    print("\nmagnitude:")
     magn = magnitude(state)
-    print(magn)
-    print("\nprobability:")
-    print(probability(magn))
+    if print_magn:
+        print("\nmagnitude:")
+        print(magn)
+    if print_prob:
+        print("\nprobability:")
+        print(probability(magn))
 
 def print_matrix(matrix):
     print("\nA matrix:")
@@ -80,16 +84,9 @@ def inversion(original, current):
 from math import cos 
 def classical_grover(state, predicate, iterations):
     s = state.copy()
-    #items = [k for k in range(len(state)) if predicate(k)]
-    #p = sum([abs(s[k])**2 for k in items])
-    #theta = asin(sqrt(p))
-    #assert is_close(inner(s, state), 1)
     for it in range(1, iterations + 1):
         oracle(state, predicate)
         inversion(s, state)
-        #assert is_close(inner(s, state), cos(2 * it * theta))
-        #p = sum([abs(state[k])**2 for k in items])
-        #assert is_close(p, sin((2 * it + 1)*theta)**2) 
 
 from math import log2
 def inversion_0_transformation(f, state):

@@ -11,6 +11,8 @@ def random_unitary_matrix(n):
 
     # Perform Gram-Schmidt orthonormalization
     Q, R = np.linalg.qr(A)
+    print("R:")
+    print(R)
     
     return Q
     

@@ -20,5 +20,10 @@ unitary_matrix = random_unitary_matrix(n)
 print(unitary_matrix)
 
 # Verification:  Check if the matrix is close to orthogonal
-print(np.allclose(unitary_matrix @ unitary_matrix.conj().T, np.eye(2**n)))  # Should be close to True
+print(np.allclose(unitary_matrix @ unitary_matrix.conj().T, np.eye(2**n)))
+# Should be close to True
+
 print(np.eye(2**n))
+
+
+

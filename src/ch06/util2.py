@@ -57,8 +57,11 @@ def real_matrix(dim):
 
 def random_transformation(n):
     import scipy.stats
-    if compl_matr
-    U = scipy.stats.unitary_group.rvs(2**n)
+    U = []
+    if compl_matr: 
+        U = scipy.stats.unitary_group.rvs(2**n)
+    else:
+        U = real_matrix(2**n)
     round_matrix(U)
     if print_matr: print_matrix(U)
     

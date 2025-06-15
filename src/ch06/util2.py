@@ -3,6 +3,7 @@ n = 3
 print_matr = False
 print_magn = False
 print_prob = False
+compl_matr = True
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -49,8 +50,14 @@ def init_state(n):
     state[0] = 1
     return state
 
+def real_matrix(dim):
+    A = np.random.rand(dim, dim)
+    Q,R = np.linalg.qr(A)
+    return Q
+
 def random_transformation(n):
     import scipy.stats
+    if compl_matr
     U = scipy.stats.unitary_group.rvs(2**n)
     round_matrix(U)
     if print_matr: print_matrix(U)

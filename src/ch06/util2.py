@@ -14,12 +14,18 @@ def round_matrix(matrix):
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
             item = matrix[row][col]
-            matrix[row][col] = round(item.real,r)+1j*round(item.imag,r)
+            if compl_matr:
+                matrix[row][col] = round(item.real,r)+1j*round(item.imag,r)
+            else:
+                matrix[row][col] = round(item, r)
 
 def round_vector(vector):
     for i in range(len(vector)):
         item = vector[i]
-        vector[i] = round(item.real,r)+1j*round(item.imag,r)
+        if compl_matr:
+            vector[i] = round(item.real,r)+1j*round(item.imag,r)
+        else:
+            vector[i] = round(item, r)
 
 def magnitude(vector):
     return [round(abs(item),r) for item in vector]

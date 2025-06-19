@@ -88,7 +88,8 @@ def random_transformation(n):
         assert(len(state) == 2**n)
         m = np.conj(U.transpose())
         col = [arr[column] for arr in m]
-        s = [c * s for c,s in zip(col, state)]
+        sc = state[column]
+        s = [c * sc for c in col]
         for k in range(len(s)):
             state[k] = s[k]
             

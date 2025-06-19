@@ -1,9 +1,10 @@
-r = 4
-n = 3
-print_matr = False
+r = 2
+n = 2
+col = 2
+print_matr = True
 print_magn = False
 print_prob = False
-compl_matr = True
+compl_matr = False
 
 def oracle(state, predicate):
     for item in range(len(state)):
@@ -112,7 +113,6 @@ orig_state = a_state.copy()
 A_inv(orig_state)
 print_state("\nA_inv X a_state:", orig_state)
 
-col = 3
 col_inv(a_state, col)
 print_state("\nA_inv_col X a_state:", a_state)
 

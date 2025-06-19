@@ -105,16 +105,16 @@ print("\ninit state:")
 print(state)
 
 A(state)
-print_state("state after A:", state)
+print_state("A_state:", state)
 
 a_state = state.copy()
 orig_state = a_state.copy()
 A_inv(orig_state)
-print_state("\norig_state:", orig_state)
+print_state("\nA_inv X a_state:", orig_state)
 
 col = 3
 col_inv(a_state, col)
-print_state("\ncol_a_state:", a_state)
+print_state("\nA_inv_col X a_state:", a_state)
 
 predicate = lambda k: True if k == col else False
 oracle(state, predicate)
@@ -123,10 +123,10 @@ print_state("\nstate after oracle:", state)
 oracle_state = state.copy()
 
 col_inv(oracle_state, col)
-print_state("\ncol_oracle_state:", oracle_state)
+print_state("\nA_inv_col X oracle_state:", oracle_state)
 
 A_inv(state)
-print_state("\ninv_state", state)
+print_state("\nA_inv X oracle_state", state)
 
 
 
